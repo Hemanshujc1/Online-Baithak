@@ -107,7 +107,7 @@ const MeetingTypeList = () => {
                dateTime: date! })}
                showTimeSelect
                timeFormat='HH:mm'
-               timeIntervals={15}
+               timeIntervals={5}
                timeCaption='time'
                dateFormat="MMM d, yyyy h:mm aa"
                className='w-full rounded bg-[#252A41] p-2 focus:outline-none'/>

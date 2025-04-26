@@ -9,9 +9,9 @@ import { toast } from 'sonner';
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const router = useRouter();
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
-    useGetCalls();
+  const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
+  
 
   const getCalls = () => {
     switch (type) {
@@ -39,13 +39,13 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
     }
   };
 
+
   useEffect(() => {
     const fetchRecordings = async () => {
         try {
             const callData = await Promise.all(
                 callRecordings?.map((meeting) => meeting.queryRecordings()) ?? [],
               );
-        
               const recordings = callData
                 .filter((call) => call.recordings.length > 0)
                 .flatMap((call) => call.recordings);
@@ -62,16 +62,15 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   }, [type, callRecordings]);
 
   if (isLoading) return <Loader />;
-
   const calls = getCalls();
   const noCallsMessage = getNoCallsMessage();
 
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording) => (
+        calls.map((meeting: Call | CallRecording, index: number) => (
           <MeetingCard
-            key={(meeting as Call).id}
+            key={(meeting as Call).id || (meeting as CallRecording).url || index}
             icon={
               type === 'ended'
                 ? '/icons/previous.svg'
@@ -81,8 +80,8 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
             }
             title={
                 // add ? so that our app doesn;t break if it doesn't exist
-              (meeting as Call).state?.custom?.description?.substring(0, 20) ||
-              (meeting as CallRecording).filename?.substring(0, 20) ||
+              (meeting as Call).state?.custom?.description?.substring(0, 25) ||
+              (meeting as CallRecording).filename?.substring(0, 25) ||
               'Personal Meeting'
             }
             date={
