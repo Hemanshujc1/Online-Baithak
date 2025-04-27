@@ -46,13 +46,14 @@
 // ❌ No "use client" here
 import MeetingClient from './MeetingClient';
 
-interface MeetingPageProps {
-  params: { id: string };
+interface PageProps {
+  params: {
+    id: string;
+  };
 }
 
-const Meeting = async ({ params }: MeetingPageProps) => {
+const Meeting = ({ params }: PageProps) => {
   return <MeetingClient id={params.id} />;
 };
 
 export default Meeting;
-
