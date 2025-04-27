@@ -16,27 +16,29 @@ function calculateTimeLeft(targetTime: Date) {
 const CountdownTimer = ({ targetTime }: { targetTime: Date }) => {
   const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetTime));
 
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    let timeout: NodeJS.Timeout;
-
+    let timeout: NodeJS.Timeout; 
+  
     const syncInterval = () => {
       setTimeLeft(calculateTimeLeft(targetTime));
       interval = setInterval(() => {
         setTimeLeft(calculateTimeLeft(targetTime));
       }, 1000);
     };
-
+  
     const now = new Date();
     const msUntilNextSecond = 1000 - now.getMilliseconds();
-
+  
     timeout = setTimeout(syncInterval, msUntilNextSecond);
-
+  
     return () => {
       clearInterval(interval);
       clearTimeout(timeout);
     };
   }, [targetTime]);
+  
 
   const { hours, minutes, seconds, isTimeUp } = timeLeft;
   const isUrgent = hours === 0 && minutes < 1 && !isTimeUp;
