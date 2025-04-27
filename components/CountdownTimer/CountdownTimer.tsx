@@ -36,3 +36,4 @@ const CountdownTimer = ({ targetTime }: { targetTime: Date }) => {
     </p>
   );
 };
+export default CountdownTimer;
