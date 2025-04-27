@@ -9,8 +9,8 @@ import { useState } from 'react';
 import Alert from '@/components/Alert/Alert';
 
 
-const Meeting = ({params:{id} }: { params: { id: string }}) => {
-
+const Meeting = ({params}: { params: { id: string }}) => {
+  const { id } = params;
   const {isLoaded,user}=useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   const {call, isCallLoading} =useGetCallById(id);
