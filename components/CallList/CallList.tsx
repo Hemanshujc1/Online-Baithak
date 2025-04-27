@@ -51,8 +51,8 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                 .flatMap((call) => call.recordings);
         
               setRecordings(recordings);
-        } catch (error: any) {
-          toast(error?.message || "Try again Later");
+        } catch (_) {
+          toast("Try again Later");
       }      
     };
 

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { avatarImages } from "@/constants";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 interface MeetingCardProps {
   title: string;
@@ -28,7 +28,7 @@ const MeetingCard = ({
   link,
   buttonText,
 }: MeetingCardProps) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-[#1C1F2E] px-5 py-8 xl:max-w-[568px]">
