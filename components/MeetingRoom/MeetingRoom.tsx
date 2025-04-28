@@ -21,7 +21,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "../EndCallButton/EndCallButton";
 import Loader from "../Loader/Loader";
 import { toast } from "sonner";
-import { RecordCallButton } from "@stream-io/video-react-sdk";
 import TooltipButton from "../TooltipButton/TooltipButton";
 
 // 'personal'=> !'personal' => false = !false =>true;
