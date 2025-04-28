@@ -12,7 +12,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   
-
+  
   const getCalls = () => {
     switch (type) {
       case 'ended':
@@ -38,6 +38,8 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
         return '';
     }
   };
+
+
 
 
   useEffect(() => {
@@ -101,6 +103,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                 ? () => router.push(`${(meeting as CallRecording).url}`)
                 : () => router.push(`/meeting/${(meeting as Call).id}`)
             }
+            // handleDelete={() => handleDeleteMeeting(meeting)} 
           />
         ))
       ) : (

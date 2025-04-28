@@ -1,23 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-  /* * {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   } */
-@layer utilities{
-  .flex-center{
+@layer utilities {
+  .flex-center {
     @apply flex justify-center items-center;
   }
-  .flex-between{
+  .flex-between {
     @apply flex justify-between items-center;
   }
 }
 
 /* clerk class override */
-.cl-userButtonPopoverActionButtonIcon {
-  color: white;
-}
 
 .cl-logoBox {
   height: 40px;
@@ -29,20 +26,29 @@
 .cl-socialButtonsIconButton {
   border: 2px solid #565761;
 }
-.cl-internal-wkkub3 {
-  color: white;
+
+.cl-userButtonPopoverActionButton:hover,
+.cl-userButtonPopoverActionButtonIcon:hover {
+  color: blueviolet;
 }
-.cl-userButtonPopoverActionButton {
-  color: white;
-}
-.cl-socialButtonsIconButton__github{
+.cl-socialButtonsIconButton__github {
   filter: invert(1);
 }
-
+.cl-navbarButtonText,
+.cl-navbarButtonIcon,
+.cl-userButtonPopoverActionButton,
+.cl-internal-wkkub3,
+.cl-userButtonPopoverActionButtonIcon {
+  color: white;
+}
+.cl-badge {
+  color: white;
+  background: #252a41;
+}
 /* some more css */
 
 .bg_hero {
-  background-image: url('/images/hero-background.png');
+  background-image: url("/images/hero-background.png");
 }
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);

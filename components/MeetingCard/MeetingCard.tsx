@@ -16,6 +16,7 @@ interface MeetingCardProps {
   buttonText?: string;
   handleClick: () => void;
   link: string;
+  // handleDelete: () => void;  
 }
 
 const MeetingCard = ({
@@ -26,6 +27,7 @@ const MeetingCard = ({
   buttonIcon1,
   handleClick,
   link,
+  // handleDelete,
   buttonText,
 }: MeetingCardProps) => {
   // const router = useRouter();
@@ -58,7 +60,7 @@ const MeetingCard = ({
               />
             ))}
             <div className="flex-center absolute left-[136px] size-10 rounded-full border-[5px] border-[#252A41] bg-[#1E2757]">
-              +5
+              +
             </div>
           </div>
           <div>
@@ -91,7 +93,10 @@ const MeetingCard = ({
             </Button>
           </div>
         )}
-        <Button className="bg-red-700 px-6">Delete Meeting</Button>
+       {/* <Button onClick={handleDelete} className="bg-red-700 px-6">
+  {isPreviousMeeting ? "Delete Meeting" : "Cancel Meeting"}
+</Button> */}
+
 
       </article>
     </section>
