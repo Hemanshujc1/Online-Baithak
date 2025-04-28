@@ -39,7 +39,7 @@ router.push(`/meeting/${meetingId}?personal=true`)
     <section className='flex size-full flex-col gap-10 text-white'>
     <h1 className='text-3xl font-bold'>Personal room
     </h1>
-    <div className="flex w-full flex-col gap-8 xl:max-w-[900px]">
+    <div className="flex w-[95vw] flex-col gap-8 xl:max-w-[900px]">
       <Table title="Topic" description={`${user?.username}'s meeting room`} />
       <Table title="Meeting ID" description={meetingId!} />
       <Table title="Invite Link" description={meetingLink}/>
