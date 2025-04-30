@@ -12,22 +12,40 @@ function calculateTimeLeft(targetTime: Date) {
 
   return { hours, minutes, seconds };
 }
-const CountdownTimer = ({ targetTime }: { targetTime: Date }) => {
+
+interface CountdownTimerProps {
+  targetTime: Date;
+  onComplete?: () => void;
+}
+
+const CountdownTimer = ({ targetTime, onComplete }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetTime));
+  const [hasCompleted, setHasCompleted] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft(targetTime));
+      const newTimeLeft = calculateTimeLeft(targetTime);
+      setTimeLeft(newTimeLeft);
+
+      if (
+        newTimeLeft.hours === 0 &&
+        newTimeLeft.minutes === 0 &&
+        newTimeLeft.seconds === 0 &&
+        !hasCompleted
+      ) {
+        setHasCompleted(true);
+        if (onComplete) onComplete();
+        clearInterval(timer);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetTime]);
+  }, [targetTime, onComplete, hasCompleted]);
 
   const { hours, minutes, seconds } = timeLeft;
-  const isUrgent = hours === 0 && minutes < 1;
 
   return (
-    <p className={`text-sm font-medium ${isUrgent ? "animate-pulse text-red-400" : "text-gray-300"}`}>
+    <p className="text-sm font-medium text-gray-300">
       {hours > 0
         ? `Starting in: ${hours} h : ${minutes} m`
         : minutes > 0
@@ -36,4 +54,5 @@ const CountdownTimer = ({ targetTime }: { targetTime: Date }) => {
     </p>
   );
 };
+
 export default CountdownTimer;

@@ -15,7 +15,7 @@ const EndCallButton = () => {
     <Button onClick={async () => {
         await call.endCall();
         router.push('/')
-    }} className="bg-red-700" >
+    }} className="bg-red-700 text-xs font-bold" >
         End Call for Everyone
     </Button>
   )

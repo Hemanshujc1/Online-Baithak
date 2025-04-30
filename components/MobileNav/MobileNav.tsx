@@ -14,6 +14,7 @@ import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
+
 const MobileNav = () => {
   const pathname = usePathname();
   return (

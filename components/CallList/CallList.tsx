@@ -7,6 +7,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
+
+
+
+
+
+
+
+
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const router = useRouter();
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
@@ -38,9 +46,6 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
         return '';
     }
   };
-
-
-
 
   useEffect(() => {
     const fetchRecordings = async () => {
@@ -103,7 +108,8 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                 ? () => router.push(`${(meeting as CallRecording).url}`)
                 : () => router.push(`/meeting/${(meeting as Call).id}`)
             }
-            // handleDelete={() => handleDeleteMeeting(meeting)} 
+      
+            
           />
         ))
       ) : (

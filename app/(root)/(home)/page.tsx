@@ -3,10 +3,27 @@ import React, { useState, useEffect } from "react";
 import MeetingTypeList from "@/components/MeetingTypeList/MeetingTypeList";
 import { useGetCalls } from "@/hooks/useGetCalls";
 import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
+import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 const Home = () => {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const { upcomingCalls, isLoading } = useGetCalls();
+  const [showJoinPopup, setShowJoinPopup] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    if (showJoinPopup) {
+      const timer = setTimeout(() => {
+        setShowJoinPopup(false);
+      }, 10000); // 10 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [showJoinPopup]);
+
+  const handleCountdownComplete = () => {
+    setShowJoinPopup(true); // show the Join Meeting button
+  };
 
   useEffect(() => {
     const updateTime = () => {
@@ -51,6 +68,19 @@ const Home = () => {
         minute: "2-digit",
       })
     : null;
+    const now = new Date();
+
+    const currentMeeting = sortedUpcomingCalls.find((call) => {
+      const start = call?.state?.startsAt ? new Date(call.state.startsAt) : null;
+    
+      if (!start) return false;
+    
+      const timeDiffInMinutes = (now.getTime() - start.getTime()) / (1000 * 60);
+      return timeDiffInMinutes >= 0 && timeDiffInMinutes <= 5; // within last 10 minutes
+    });
+    const meetingToJoin = currentMeeting || nextMeeting;
+    
+
 
   return (
     <section className="flex size-full flex-col gap-10 text-white">
@@ -72,6 +102,7 @@ const Home = () => {
                     <span className="text-sm text-gray-500 animate-fade-in-slow">
                       <CountdownTimer
                         targetTime={new Date(nextMeeting.state.startsAt)}
+                        onComplete={handleCountdownComplete}
                       />
                     </span>
                   )}
@@ -91,6 +122,19 @@ const Home = () => {
         </div>
       </div>
       <MeetingTypeList />
+      {showJoinPopup && (
+        <div className="absolute top-10 right-10 bg-white text-black px-4 py-3 rounded-xl shadow-md z-50 flex items-center gap-4">
+          <button
+            onClick={() => router.push(`/meeting/${meetingToJoin?.id}`)}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            Join Meeting
+          </button>
+          <button onClick={() => setShowJoinPopup(false)}>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
     </section>
   );
 };
