@@ -8,13 +8,6 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 
-
-
-
-
-
-
-
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const router = useRouter();
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();

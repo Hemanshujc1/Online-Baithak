@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner"
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,17 +38,18 @@ export default function RootLayout({
           },
           variables: {
             colorText: "#fff",
-            colorPrimary: "#0E78F9",
-            colorBackground: "#1c1f2e",
-            colorInputBackground: "#252a41",
+            colorPrimary: "#14B8A6", //0E78F9
+            colorBackground: "#121212", //1C1F2E
+            colorInputBackground: "#252a41", //252A41
             colorInputText: "#fff",
           },
         }}
       >
-        {/* <ClerkProvider> */}
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#161925]`}
-        >
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#181D23]`}  //bg-dark-2
+        > 
+       
+          
           {children}
           <Toaster/>
         </body>

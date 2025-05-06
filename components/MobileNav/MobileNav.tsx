@@ -29,7 +29,8 @@ const MobileNav = () => {
             className="cursor-pointer sm:hidden"
           />
         </SheetTrigger>
-        <SheetContent side="left" className="border-none bg-[#1C1F2E]">
+        <SheetContent side="left" className="border-none bg-[#101418]">
+          {/*  bg-dark-1*/}
         <SheetHeader>
       <SheetTitle> <Link href="/" className="flex items-center gap-1">
             <Image
@@ -57,7 +58,7 @@ const MobileNav = () => {
                         key={link.label}
                         className={cn(
                           "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
-                          { "bg-[#0E78F9]": isActive }
+                          { "bg-[#14B8A6]": isActive }
                         )}
                       >
                         <Image

@@ -28,7 +28,7 @@
 }
 
 .cl-userButtonPopoverActionButton:hover,
-.cl-userButtonPopoverActionButtonIcon:hover {
+.cl-userButtonPopoverActionButtonIcon:hover,.cl-avatarImageActonsUpload:hover {
   color: blueviolet;
 }
 .cl-socialButtonsIconButton__github {
@@ -38,20 +38,64 @@
 .cl-navbarButtonIcon,
 .cl-userButtonPopoverActionButton,
 .cl-internal-wkkub3,
-.cl-userButtonPopoverActionButtonIcon {
+.cl-userButtonPopoverActionButtonIcon, .cl-avatarImageActonsUpload {
   color: white;
 }
-.cl-badge {
+.cl-badge, .cl-avatarImageActonsUpload {
   color: white;
   background: #252a41;
 }
 /* some more css */
 
 .bg_hero {
-  background-image: url("/images/hero-background.png");
+  background-image: url("/images/hero.png");
 }
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+/* global.css */
+/* .str-video__call-stats {
+  max-width: 500px;
+  position: relative;
+}
+
+.str-video__speaker-layout__wrapper {
+  max-height: 700px;
+}
+
+.str-video__participant-details {
+  color: white;
+}
+
+.str-video__menu-container {
+  color: white;
+}
+
+.str-video__notification {
+  color: white;
+}
+
+.str-video__participant-list {
+  background-color: #1c1f2e;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  height: 100%;
+}
+
+.str-video__call-controls__button {
+  height: 40px;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.glassmorphism2 {
+  background: rgba(18, 17, 17, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+} */

@@ -33,7 +33,8 @@ const MeetingModal = ({
 }: MeetingModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none bg-[#1C1F2E] px-6 py-9 text-white">
+      <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none bg-[#101418] px-6 py-9 text-white">
+        {/* bg-dark-1  */}
       <DialogTitle></DialogTitle> {/* Added DialogTitle for accessibility */}
         <div className="flex flex-col gap-6">
             {image && (
@@ -45,7 +46,8 @@ const MeetingModal = ({
             ) }
             <h1 className={cn('text-3xl font-bold leading-[42px]',className)}>{title}</h1>
             {children}
-            <Button className="bg-[#0E78F9] focus-visible:ring-0" onClick={handleClick}>
+            <Button className="bg-[#14B8A6] focus-visible:ring-0" onClick={handleClick}>
+              {/* bg-blue-1 */}
                 {buttonIcon && (
                     <Image src={buttonIcon} alt="button icon" width={13} height={13}></Image>
                 )} &nbsp;

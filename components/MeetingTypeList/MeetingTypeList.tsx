@@ -74,28 +74,31 @@ const MeetingTypeList = () => {
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       <HomeCard
-        classsName="bg-[#FF742E]"
+        classsName="bg-[#F59E0B]"
         img="/icons/add-meeting.svg"
         title="New Meeting"
         description="Start an Instant Meeting"
         handleClick={() => setmeetingState("isInstantMeeting")}
       />
       <HomeCard
-        classsName="bg-[#0E78F9]"
+        classsName="bg-[#14B8A6]"
+        //bg-yellow-1
         img="/icons/schedule.svg"
         title="Schedule Meeting"
         description="Plan your Meeting"
         handleClick={() => setmeetingState("isScheduleMeeting")}
       />
       <HomeCard
-        classsName="bg-[#830EF9]"
+        classsName="bg-[#8B5CF6]"
+        //bg-purple-1
         img="/icons/recordings.svg"
         title="View Recordings"
         description="Check out your Recordings"
         handleClick={() => router.push("/recordings")}
       />
       <HomeCard
-        classsName="bg-[#F9A90E]"
+        classsName="bg-[#F43F5E]"
+        // bg-blue-1
         img="/icons/join-meeting.svg"
         title="Join Meeting"
         description="via invitation link"
@@ -110,17 +113,17 @@ const MeetingTypeList = () => {
           handleClick={createMeeting}
         >
           <div className="flex flex-col gap-2.5">
-            <label className="text-base text-normal leading-[22px] text-[#ECF0FF]">
+            <label className="text-base text-normal leading-[22px] text-[#E4E4E7]">
               Add a Description
             </label>
             <Textarea
-              className="bg-[#252A41] border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="bg-[#20262E] border-none focus-visible:ring-0 focus-visible:ring-offset-0"
               onChange={(e) => {
                 setValues({ ...values, description: e.target.value });
               }}
             />
             <div className="flex w-full flex-col gap-2.5">
-              <label className="text-base text-normal leading-[22px] text-[#ECF0FF]">
+              <label className="text-base text-normal leading-[22px] text-[#E4E4E7]">
                 Select Date and Time
               </label>
               {/* <ReactDatePicker
@@ -131,7 +134,7 @@ const MeetingTypeList = () => {
                 timeIntervals={5}
                 timeCaption="time"
                 dateFormat="MMM d, yyyy h:mm aa"
-                className="w-full rounded bg-[#252A41] p-2 focus:outline-none"
+                className="w-full rounded bg-[#20262E] p-2 focus:outline-none"
               /> */}
               <ReactDatePicker
                 selected={values.dateTime}
@@ -141,7 +144,7 @@ const MeetingTypeList = () => {
                 timeIntervals={5}
                 timeCaption="time"
                 dateFormat="MMM d, yyyy h:mm aa"
-                className="w-full rounded bg-[#252A41] p-2 focus:outline-none"
+                className="w-full rounded bg-[#20262E] p-2 focus:outline-none"
                 minDate={new Date()}
                 minTime={
                   isToday(values.dateTime)
@@ -186,7 +189,7 @@ const MeetingTypeList = () => {
       >
         <Input
           placeholder="Meeting link"
-          className="border-none bg-[#1C1F2E] focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="border-none bg-[#101418] focus-visible:ring-0 focus-visible:ring-offset-0"
           onChange={(e) => setValues({ ...values, link: e.target.value })}
         />
       </MeetingModal>

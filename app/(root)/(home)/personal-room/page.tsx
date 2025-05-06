@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 
 const Table = ({title, description}:{title:string;description:string})=>(
   <div className='flex flex-col items-start gap-2 xl:flex-row'>
-    <h1 className='text-base font-medium text-[#C9DDFF] lg:text-xl xl:min-w-32'>{title}:</h1>
+    <h1 className='text-base font-medium text-[#D4D4D8] lg:text-xl xl:min-w-32'>{title}:</h1>
     <h1 className='truncate text-sm font-bold max-sm:max-w-[320px] lg:text-xl'>{description}</h1>
   </div>
 )
@@ -45,10 +45,12 @@ router.push(`/meeting/${meetingId}?personal=true`)
       <Table title="Invite Link" description={meetingLink}/>
     </div>
     <div className="flex gap-5">
-      <Button className='bg-[#0E78F9]' onClick={startRoom}>
+      <Button className='bg-[#14B8A6]' onClick={startRoom}>   
+        {/* bg-blue-1 */}
         Start Meeting
       </Button>
-      <Button className='bg-[#252A41]' 
+ {/* bg-dark-3 */}
+      <Button className='bg-[#20262E]' 
       onClick={()=>{
         navigator.clipboard.writeText(meetingLink);
         toast("Link Copied")

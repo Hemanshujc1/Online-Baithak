@@ -14,7 +14,7 @@ const EndCallButton = () => {
     // error in color apply nhi ho raha hai
     <Button onClick={async () => {
         await call.endCall();
-        router.push('/')
+        router.push('/homepage')
     }} className="bg-red-700 text-xs font-bold" >
         End Call for Everyone
     </Button>

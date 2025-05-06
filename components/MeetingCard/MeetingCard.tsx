@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { avatarImages } from "@/constants";
 import { toast } from "sonner";
-// import { useRouter } from "next/navigation";
 
 interface MeetingCardProps {
   title: string;
@@ -28,10 +27,10 @@ const MeetingCard = ({
   link,
   buttonText,
 }: MeetingCardProps) => {
-  // const router = useRouter();
 
   return (
-    <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-[#1C1F2E] px-5 py-8 xl:max-w-[568px]">
+    <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-[#101418] px-5 py-8 xl:max-w-[568px]">
+      {/* bg-dark-1 */}
       <article className="flex flex-col gap-5">
         <Image src={icon} alt="upcoming" width={28} height={28} />
         <div className="flex justify-between">
@@ -57,7 +56,8 @@ const MeetingCard = ({
                 style={{ top: 0, left: index * 28 }}
               />
             ))}
-            <div className="flex-center absolute left-[136px] size-10 rounded-full border-[5px] border-[#252A41] bg-[#1E2757]">
+            <div className="flex-center absolute left-[136px] size-10 rounded-full border-[5px] border-[#20262E] bg-[#2A313C]">
+              {/* border-dark-3 bg-dark-4 */}
               +
             </div>
           </div>
@@ -68,7 +68,8 @@ const MeetingCard = ({
         {/* jab pervious meeting na ho tabhi */}
         {!isPreviousMeeting && (
           <div className="flex gap-2 px-4">
-            <Button onClick={handleClick} className="rounded bg-[#0E78F9] px-6">
+            <Button onClick={handleClick} className="rounded bg-[#14B8A6] px-6">
+              {/* bg-blue-1 */}
               {buttonIcon1 && (
                 <Image src={buttonIcon1} alt="feature" width={20} height={20} />
               )}
@@ -79,8 +80,9 @@ const MeetingCard = ({
                 navigator.clipboard.writeText(link);
                 toast("Link Copied");
               }}
-              className="bg-[#1E2757] px-6"
+              className="bg-[#2A313C] px-6"
             >
+              {/* bg-dark-4 */}
               <Image
                 src="/icons/copy.svg"
                 alt="feature"

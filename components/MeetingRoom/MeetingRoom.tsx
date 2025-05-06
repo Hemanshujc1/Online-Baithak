@@ -29,9 +29,9 @@ type CalllayoutType = "grid" | "speaker-left" | "speaker-right";
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
+  const router = useRouter();
   const [layout, setLayout] = useState<CalllayoutType>("grid");
   const [showParticipants, setShowParticipants] = useState(false);
-  const router = useRouter();
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
   const [isMobile, setIsMobile] = useState(false);
@@ -52,13 +52,10 @@ const MeetingRoom = () => {
     return <Loader />;
   }
 
-  if (callingState !== CallingState.JOINED) {
-    return <Loader />;
-  }
+ 
   
  const CallLayout = () => {
      if (isMobile) return <PaginatedGridLayout groupSize={4} />;
- 
      switch (layout) {
        case "grid":
          return <PaginatedGridLayout groupSize={6} />;
@@ -80,7 +77,7 @@ const MeetingRoom = () => {
         </div>
         <div
           className={cn(
-            "absolute right-0 top-0 h-[90vh] w-[40vw] bg-[#1C1F2E] transition-transform duration-300 px-4 py-6 rounded-2xl",
+            "absolute right-0 top-0 h-[90vh] w-[40vw] bg-[#101418] transition-transform duration-300 px-4 py-6 rounded-2xl",
             {
               "translate-x-0": showParticipants,
               "translate-x-full": !showParticipants,
@@ -93,22 +90,23 @@ const MeetingRoom = () => {
 
       {/* Controls */}
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 flex flex-wrap w-[80vw] items-center justify-center gap-5 px-4 pb-3">
-        <CallControls onLeave={() => router.push("/")} />
+        <CallControls onLeave={() => router.push("/homepage")} />
         {!isMobile && (
         <DropdownMenu>
           <div className="flex items-center relative group justify-center">
             <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
+             
               <LayoutList size={18} className="text-white" />
             </DropdownMenuTrigger>
             <div className="absolute bottom-full mb-2 flex flex-col items-center opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
               <div className="rounded-md bg-[#4c535b] px-3 py-1.5 text-[13px] text-white font-semibold shadow-md whitespace-nowrap">
                 Change Layout
               </div>
-
               <div className="h-2 w-2 rotate-45 bg-[#4c535b] mt-[-4px]"></div>
             </div>
           </div>
-          <DropdownMenuContent className="border-[#1C1F2E] bg-[#1C1F2E] text-white">
+          <DropdownMenuContent className="border-[#101418] bg-[#101418] text-white">
+            {/* border-dark-1 bg-dark-1  */}
             {["Grid", "Speaker-Left", "Speaker-Right"].map((item, index) => (
               <div key={index}>
                 <DropdownMenuItem
@@ -119,7 +117,8 @@ const MeetingRoom = () => {
                 >
                   {item}
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="border-[#1C1F2E]" />
+                {/* border-dark-1 */}
+                <DropdownMenuSeparator className="border-[#101418]" />
               </div>
             ))}
           </DropdownMenuContent>
