@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OnlineBaithak 📹
 
-## Getting Started
+OnlineBaithak is a modern, full-stack video conferencing application that enables seamless, real-time communication. Designed with a clean, responsive user interface and powered by robust third-party services, this platform allows users to host, schedule, and join video meetings effortlessly. "Baithak" translates to an informal meeting or gathering, reflecting the app's mission to bring people together virtually.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Secure Authentication:** User sign-up, sign-in, and session management handling via Clerk.
+- **Real-Time Video Meetings:** Instant, high-quality video and audio calls powered by the Stream Video SDK.
+- **Meeting Management:** Schedule future meetings, view upcoming/past meetings, and record meeting sessions.
+- **Join via Link/ID:** Easily shareable meeting links and access codes for quick participant onboarding.
+- **Comprehensive Meeting Controls:** Screen sharing, audio/video toggles, grid layout, speaker view, and an end-call mechanism.
+- **Responsive & Modern UI:** A beautifully designed interface using Tailwind CSS and Radix UI components, ensuring a great experience across all devices.
+- **Dark Mode Support:** Built-in seamless theme switching.
+- **Interactive UX:** Smooth animations with Framer Motion and elegant toast notifications with Sonner.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [Radix UI](https://www.radix-ui.com/) Primitives, Lucide React (Icons)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Date Utilities:** `date-fns`, React Datepicker
+- **Notifications:** Sonner
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Third-Party APIs & Integrations
+This project heavily leverages specialized third-party services to handle complex infrastructure securely and efficiently:
 
-## Learn More
+1. **[Clerk](https://clerk.com/):** 
+   - Used for end-to-end user authentication and authorization.
+   - Provides pre-built components for sign-in/sign-up flows and secures protected routes.
+2. **[Stream Video & Audio API](https://getstream.io/video/):** 
+   - Handles the core video conferencing infrastructure via `@stream-io/video-react-sdk` and `@stream-io/node-sdk`.
+   - Manages WebRTC connections, media routing, meeting recordings, and participant state management.
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
+Make sure you have Node.js and `npm` (or `yarn`/`pnpm`/`bun`) installed on your machine.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd OnlineBaithak
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the root directory and add the required keys for Clerk and Stream:
+   ```env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+
+   NEXT_PUBLIC_STREAM_API_KEY=your_stream_api_key
+   STREAM_SECRET_KEY=your_stream_secret_key
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the app:**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📁 Project Structure
+
+- `/app`: Contains Next.js App Router pages, layouts, and API routes.
+- `/components`: Reusable UI components (Navbar, Sidebar, Meeting cards, Video controls).
+- `/hooks`: Custom React hooks.
+- `/providers`: Context providers for Stream Video and Theme management.
+- `/actions`: Server actions for secure backend logic.
+- `/constants`: Global static constants and configuration data.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
